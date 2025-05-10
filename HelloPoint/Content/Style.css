@@ -1,0 +1,692 @@
+﻿html{
+    overflow:auto;
+}
+
+body {
+    background-size:100%;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    background-image:url('../Content/2.png');
+}
+
+#footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+}   
+
+#loginForm{
+    width:450px;
+    height:250px;
+}
+
+#loginColor{
+    background-color:white;
+    height:250px;
+    width:400px;
+    padding:15px 5px 15px 15px;
+}
+
+.col-md-8{
+    height:250px;
+    width:450px;
+    clear: left; 
+    float: left; 
+    position: relative; 
+    left: 28%;
+    margin-top:10%;
+}
+
+.row{
+    width:inherit;
+    height:inherit;
+    align-content:center;
+}
+
+.col-md-2{
+    color:white;
+}
+
+.container-upload{
+    background-color:#1f1f1f;
+    margin-top:70px;
+    border: 2px solid; 
+    border-radius: 5px; 
+    height:auto; 
+    max-width:330px; 
+    width:auto;
+}
+
+.container-myfiles{
+    background-color:#1f1f1f;
+    margin-top:7%;
+    margin-right:11%;
+    border: 2px solid; 
+    border-radius: 5px;
+    max-height:500px;
+    height:auto; 
+    max-width: 400px; 
+    width:400px;
+    float:right;
+}
+
+.myFilesTable{
+    overflow: auto;
+}
+
+.playlistItemColor{
+    color: white;
+    width: 200px;
+}
+
+.myFilesDiv{
+    border-spacing: 10px;
+    margin-bottom:30px;
+    overflow:auto;
+    height:400px;
+    max-height:400px;
+}
+
+
+.btn-success{
+    margin-top:15px;
+    margin-right:15px;
+    margin-bottom:20px;
+    float:right;
+}
+
+.container-theplaylist{
+    background-color:#1f1f1f;
+    margin-top:7%;
+    margin-left:11%;
+    margin-bottom:30px;
+    border: 2px solid; 
+    border-radius: 5px; 
+    height:500px; 
+    max-width:400px; 
+    width:400px;
+    float:left;
+}
+
+.h1-upload{
+    color:white; 
+    text-align:center;
+}
+
+.h3-upload{   
+    display:inline-block; 
+    color:white; 
+    text-align:left;
+    padding-left:4%;
+}
+
+
+.input-text-upload{
+    width:300px;
+    height:35px; 
+    margin-top:10px; 
+    margin-bottom:10px; 
+    background-color:#e6e6e6; 
+    border: 2px solid; 
+    border-radius: 5px;
+}
+
+.input-text-password{
+    width:200px; 
+    background-color:#e6e6e6; 
+    border: 2px solid; 
+    border-radius: 5px;
+    margin-top:-3px;
+}
+
+.label-for-description{
+    color:#808080;
+}
+
+.maragin-top-15 {
+    margin-top:15px;
+}
+
+.maragin-button-15{
+    margin-bottom:15px;
+}
+
+.button-right-upload{
+    float:right;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+.button-left-upload{
+    float:left;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+.limitcolor{
+    color:#808080;
+}
+
+#addelement,
+#btIn,
+#btTurn,
+#btRestart,
+#btReset, 
+#btOut, 
+#btUp, 
+#btDown,
+#btLeft,
+#btRight, 
+#deletelement, 
+#editelement, 
+#btplay, 
+#btpause, 
+#btstop, 
+#deleteplayelement, 
+#downelement, 
+#upelement,
+#addFile, 
+#btdeleteplaylist,
+#upDateElement,
+#transparentIcon,  
+#registerBtn,
+#deleteIcon{
+    border:none;
+    border-radius:8px;
+    background-color:inherit;   
+}
+
+#filesTableRow{   
+   border:medium;   
+}
+
+.highlight {
+  background-color: #5cb85c;
+}
+
+#playlist{
+    border-spacing: 10px;
+    margin-bottom:10px;
+    overflow:auto;
+    max-height:250px;
+}
+
+#playElementDetails{
+    border-top:solid;
+    border-top-width:1px;
+    border-top-color:white;
+    height:27%;
+    width:initial;
+    max-height:27%;
+    margin-bottom:20px;
+}
+
+#playElementDetailsContent{
+    overflow:auto;
+    color:white;
+    height:100px;
+    width:inherit;
+    max-height:100px;
+}
+
+#h4-Properties{
+    display:inline-block; 
+    color:white; 
+    text-align:left;
+    padding-left:4%;
+}
+
+table {    
+    border-collapse: collapse;
+}
+
+td{
+    padding:10px;
+}
+
+#downelement{
+    margin-right:30px;
+}
+
+#filesAndAdd{
+    margin-bottom:25px;
+}
+
+ #addFile, #deletelement, #deleteplayelement, #btdeleteplaylist{
+     margin-right: inherit;
+ }
+
+ #addelement{
+     margin-left: inherit;
+ }
+
+ #playlistAndButtons{
+    display: flex;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+ #buttonsDiv, #playlistDiv{
+     width: 50%;
+     display: inline-block;
+ }
+
+ #buttonsDiv{
+     padding-top: 20px;
+ }
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px gray; 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255,0,0,0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4); 
+}
+
+.descrioption {
+    width: 200px;
+    color: white;
+}
+
+input[type=number] {
+    padding: 5px 5px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+input[type=text] {
+    padding: 5px 5px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+#filename,#FileName{
+    color:white;
+}
+
+#ppthidden{
+    visibility:hidden;
+}
+
+#bodyTable{
+    width:100%;
+    border:1px solid white;
+    overflow-y:scroll;
+}
+
+#contentTable{
+    max-height:380px;
+    width:100%;
+    overflow-y:scroll;
+}
+
+#tb_border{
+    border-radius:10px 10px 10px 10px;
+    background:#1f1f1f;
+    width:50%;
+    max-height:500px;
+    min-height:250px;
+    padding:20px;
+    color:white;
+    float:left;
+    position:relative;
+    margin:5% 0% 2% 25%;
+}
+
+#changePassTitle{
+    text-align:center;
+    color:white;
+    padding-top:40px;
+}
+
+#bodyChangePass{
+    background-color:#1f1f1f;
+    text-decoration-color:white;
+    height:300px;
+    width:400px;
+    border-radius:10px; 
+    position: center;
+    margin-top:5%;
+    margin-left:32%;
+}
+
+#changePass{
+    color:white;
+    padding:5%;
+    max-width:100%; 
+    height:auto;
+}
+
+#pass1{
+    margin-right:5%;
+    float:right;
+}
+
+#pass2{
+    margin-right:5%;
+    float:right;
+}
+
+#pass3{
+    margin-right:5%;
+    float:right;
+}
+
+#okBtn{  
+    float:right;
+    margin:10px 20px auto;
+}
+
+#registerBtn{
+    float:right;
+    margin-left:0px;
+}
+
+#changeRole{
+    padding:20px;
+    background-color:#1f1f1f;
+    text-decoration-color:white;
+    height:250px;
+    width:300px;
+    border-radius:10px; 
+    position: center;
+    margin-top:5%;
+    margin-left:36%;
+}
+
+#h2_title{
+    text-align:center;
+    color:white;
+}
+
+#textFont{
+    font-family:'Times New Roman';
+}
+
+#setRole{
+    margin-left:41%;
+    margin-top:20px;
+    border-radius:5px 5px 5px 5px;
+}
+
+#apply{
+    height:auto;
+    width:80px;
+    text-align:center;
+    float:right;
+    border-radius:5px;
+    margin: 15px 73px 0px 0px;
+}
+
+#padd{
+    padding:10px;
+    text-align:center;
+}
+
+#padd1{
+    max-width:40px;
+}
+
+#deleteIcon{
+    margin-left:15px;
+    height:30px;
+    width:30px;
+}
+
+#marginImg1{
+    padding-left:50px;
+}
+
+#marginImg2{
+    padding-left:30px;
+}
+
+#filename{
+    color:white;
+}
+
+#ppthidden{
+    visibility:hidden;
+}
+
+.RegisterLoginHeader{
+    text-align:center;
+    color: white;
+    margin:10px 0px 20px 0px;
+}
+
+#createAccountText{
+    color:white;
+}
+
+#containerRegister{
+    height:45%;
+    width:40%;
+    clear: left; 
+    float: left; 
+    position: relative; 
+    left: 28%;
+    margin-top:10%;
+    background-color:#1f1f1f;
+    border-radius:10px;
+    padding:15px 25px 20px 25px;
+}
+
+.col-md-10{
+    padding-left:50px;
+}
+
+#RegisterAndRole{
+    width:100%;
+    height:auto;
+    float:right;
+}
+
+#chooseUserRole{
+    float:right;
+    font-size:130%;
+    padding-right:40px;
+    padding-top:10px;
+    height:auto;
+    width:90.5%;
+}
+
+ #RegisterButton{
+     float:left;
+     margin-left:34%;
+     padding-top:10px;
+ }
+
+ input[type="radio"]{
+    display:none;
+}
+
+input[type="radio"] + label
+{
+    background: #999;
+    height: 16px;
+    width: 16px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+input[type="radio"]:checked + label
+{
+    background: #0080FF;
+    height: 16px;
+    width: 16px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+.movebuttons{
+    display:inline;
+    float:left;
+    width:330px;
+    height:380px;
+}
+
+.zoombuttons{
+    display:inline;
+    float:right;
+}
+
+.Wpfbuttons{
+    display:inline;
+    float:left;
+    width:100px;
+    height:620px;
+}
+
+.td-center{
+    text-align:center;
+}
+
+.td-content-center{
+    align-content:center;
+}
+
+.border-none{
+    border: none;
+}
+
+.out-values{
+    color:white;
+}
+
+.td-sizefix{
+    width:40PX;
+    table-layout:fixed; 
+}
+
+.td-moniotor {
+    width:300px;
+    table-layout:fixed;
+}
+
+.container-configuration{
+    background-color:#1f1f1f;
+    margin : auto;
+    margin-top:7%;
+    border: 2px solid; 
+    border-radius: 5px; 
+    height:500px; 
+    max-width:600px; 
+    width:600px;
+    float:left;
+}
+
+.headViewUser{
+     position:relative;
+ }
+
+#textMargin{
+     padding-left:5px;
+     float:left;
+     color:white;
+ }
+
+.contentRegister{
+    background:#1f1f1f;
+    height:50%;
+    width:50%;
+}
+
+#Role{
+    float:right;
+    border-radius: 5px 5px 5px 5px;
+    height: 33px;
+    padding: 5px;
+    width: 70%;
+}
+
+#widthCell{
+    max-width:150px;
+    overflow:hidden;
+}
+
+.form-group{
+    padding:0px;
+}
+
+.input-text-register{
+    width:100%; 
+    background-color:#e6e6e6; 
+    border: 2px solid; 
+    border-radius: 5px;
+    margin-top:-3px;
+    float:right;
+}
+
+#roleText{
+    color:white; 
+    float:left; 
+    padding-top:15px;
+}
+
+#paddRegister1{
+    padding-bottom:10px;
+    float:right;
+    width:65%;
+    margin-top:-5px;
+}
+
+#paddRegister2{
+    width:65%;
+    float:right;
+}
+
+#username{
+    max-height:70px;
+    width:40%;
+    float:left;
+    color:white;
+}
+
+#sizeIcon{
+    width:30px;
+    height:30px;
+}
+
+#usernameChangePass{
+    color:white;
+}
+
+#aqw{
+    float:left;
+}
+
+.topPasswordPage{
+    width:100%;
+    height:auto;
+    padding:20px 0px 5px 15px;
+    color:white;
+}
+
+.dbName{
+    padding-left:70px;
+}
+
+#roleselecttag{
+    border-radius:5px 5px 5px 5px;
+    height:33px;
+    width:50%;
+}
+
+.alignLeft{
+    padding-left:15px;
+}

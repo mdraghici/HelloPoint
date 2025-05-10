@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloPoint", "HelloPoint\HelloPoint.csproj", "{5AD34112-296D-4763-ADC4-D3CEDC5606D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloPoint.Tests", "HelloPoint.Tests\HelloPoint.Tests.csproj", "{E73A12AC-6198-435B-B8D5-17DAF05DF9C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AD34112-296D-4763-ADC4-D3CEDC5606D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AD34112-296D-4763-ADC4-D3CEDC5606D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AD34112-296D-4763-ADC4-D3CEDC5606D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AD34112-296D-4763-ADC4-D3CEDC5606D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E73A12AC-6198-435B-B8D5-17DAF05DF9C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E73A12AC-6198-435B-B8D5-17DAF05DF9C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E73A12AC-6198-435B-B8D5-17DAF05DF9C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E73A12AC-6198-435B-B8D5-17DAF05DF9C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = HelloPoint.Tests\\HelloPoint.Tests.csproj
+		SccProjectName1 = HelloPoint.Tests
+		SccLocalPath1 = HelloPoint.Tests
+		SccProjectUniqueName2 = HelloPoint\\HelloPoint.csproj
+		SccProjectName2 = HelloPoint
+		SccLocalPath2 = HelloPoint
+	EndGlobalSection
+EndGlobal

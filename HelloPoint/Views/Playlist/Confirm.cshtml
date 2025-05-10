@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Confirm";
+}
+
+<h2>Confirm</h2>
+
+<ul>
+    @foreach (var item in ViewBag.Confirmation)
+    {
+        <li style="color:deeppink;"> @item.Guid</li>
+    }
+</ul>

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <span class="navbar-brand"><img src="~/Content/altranWhite.png" width="100" height="20"/></span>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="@(ViewContext.RouteData.Values["action"].ToString() == "UserManagement" ? "active" : "")">@Html.ActionLink("PlayList", "UserManagement", "UserManagement")</li>
+                        <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Configuration" ? "active" : "")">@Html.ActionLink("Configuration", "Configuration", "UserManagement")</li>
+
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li class="@(ViewContext.RouteData.Values["action"].ToString() == "AdminPage" ? "active" : "")">@Html.ActionLink("Admin Page", "AdminPage", "Account")</li>
+                        }
+
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+
+        <!--footer id="footer" class="modal-footer">
+                <p><strong>&copy; @DateTime.Now.Year/@DateTime.Now.Month/@DateTime.Now.Day - HelloPoint</strong></p>        
+        </footer-->
+    </div>
+</body>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+
+</html>

@@ -1,0 +1,58 @@
+﻿@model HelloPoint.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="containerRegister">
+
+    <h2 class="RegisterLoginHeader">@ViewBag.Title</h2>
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+            <div id="paddRegister1">
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Username" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div id="paddRegister1">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div id="paddRegister2">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "ConfirmPassword"})
+            </div>
+        </div>
+        <div id="RegisterAndRole">
+            
+            <div id="roleText">
+                <b>Role</b>
+            </div>
+            <div  id="chooseUserRole">
+              <select id="Role" name="Role">
+                    @foreach (var f in ViewBag.AllRoles)
+                    {
+                        <option value="@f.Name">@f.Name</option>
+                    }
+                </select>
+             </div>
+            
+        </div>
+        <div id="RegisterButton">
+            <input type="submit" class="btn btn-success" value="Register" />
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+@Styles.Render("~/Content/Style.css")

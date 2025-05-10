@@ -1,0 +1,151 @@
+﻿
+@{
+    ViewBag.Title = "Configuration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript" src="~/Scripts/Configuration.js"></script>
+
+
+
+    <div class="container-configuration container">
+        <h3 class="h3-upload"> Configuration</h3>
+        <br />
+        <br />
+        <div class="Wpfbuttons" >
+            <h5 class="h3-upload">Application controll</h5><br />
+            <button id="btTurn" name="btTurn" title="Turn On/Off Monitor" onclick="turnOnOff()">
+                <img id="monitorturnonoff" src="../Content/turnOnIcon.png" width="30" height="30" />
+            </button><br /><br />
+            <button id="btRestart" name="btRestart" title="Restart APP" onclick="restart()">
+                <img src="../Content/restartIcon.png" width="30" height="30" />
+            </button><br /><br />
+            <button id="btReset" name="btReset" title="Reset to Default" onclick="resetMonitor()">
+                <img src="../Content/refreshIcon.png" width="30" height="30" />
+            </button>
+        </div>
+        <div class="zoombuttons">
+            <h5 class="h1-upload">Zoom</h5>
+            <br />
+            <table class="border-none">
+                <tr class="border-none">
+                    <td class="border-none">
+                        <button id="btIn" name="btIn" title="Zoom in" onclick="scaleUp()" ;return false;">
+                            <img src="../Content/plus.png" width="30" height="30" />
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-center border-none">
+                        <span class="out-values" id="Zoomvalue">0</span>
+                    </td>
+                </tr>
+                <tr class="border-none">
+                    <td class="border-none">
+                        <button id="btOut" name="btOut" title="Zoom out" onclick="scaleDown()" ;return false;">
+                            <img src="../Content/minus.png" width="30" height="30" />
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="movebuttons">
+            <h5 class="h1-upload">Display controll</h5>
+            <table class="border-none">
+                <tr class="border-none">
+                    <td class="border-none"></td>
+                    <td class="border-none">
+                        <table align="center">
+                            <tr>
+                                <td class="border-none td-center"><span class="out-values" id="Upvalue">0</span></td>
+                            </tr>
+                            <tr class="border-none">
+                                <td class="border-none td-center">
+                                    <button id="btUp" name="btUp" title="Up" onclick="moveUp()" ;return false;">
+                                        <img src="../Content/up.png" width="30" height="30" />
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    <td class="border-none"></td>
+                </tr>
+                <tr>
+                    <td class="border-none td-center">
+                        <table>                   
+                            <tr>
+                                <td class="border-none">
+                                    <button id="btLeft" name="btLeft" title="Left" onclick="moveLeft()">
+                                        <img src="../Content/left.png" width="30" height="30" />
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border-none">
+                                    <span class="out-values" id="Leftvalue">0</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table width="140" class="table-monitor"  align="center">
+                            <tr class="border-none td-center">
+                                <td class="border-none td-sizefix"></td>
+                                <td class="border-none td-sizefix">
+                                    <input type="radio" id="shipadd2" name="address" checked="checked" onclick="changemonitor(2)" />
+                                    <label for="shipadd2"></label>
+                                </td>
+                                <td class="border-none"></td>
+                            </tr>
+                            <tr class="border-none td-center">
+                                <td class="border-none td-sizefix">
+                                    <input type="radio" id="shipadd3" name="address" onclick="changemonitor(0)" />
+                                    <label for="shipadd3"></label>
+                                </td>
+                                <td class="border-none td-sizefix"></td>
+                                <td class="border-none td-center td-sizefix">
+                                    <input type="radio" id="shipadd4" name="address" onclick="changemonitor(1)" />
+                                    <label for="shipadd4"></label>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="border-none td-center">
+                        <table>               
+                            <tr>
+                                <td class="border-none">
+                                    <button id="btRight" name="btRight" title="Right" onclick="moveRight()">
+                                        <img src="../Content/right.png" width="30" height="30" />
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border-none">
+                                    <span class="out-values" id="Rightvalue">0</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border-none"></td>
+                    <td class="border-none td-center">
+                        <table align="center">
+                            <tr class="border-none ">
+                                <td class="border-none td-sizefix">
+                                    <button id="btDown" name="btDown" title="Down" onclick="moveDown()">
+                                        <img src="../Content/down.png" width="30" height="30" />
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border-none td-center"><span class="out-values" id="Downvalue">0</span></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="border-none"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+@Styles.Render("~/Content/Style.css")

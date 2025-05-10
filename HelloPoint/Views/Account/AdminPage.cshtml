@@ -1,0 +1,37 @@
+﻿@model HelloPoint.Models.UserAndRole
+
+<script type="text/javascript" src="~/Scripts/ManageAdminPage.js"></script>
+
+<div id="tb_border">
+    <div class="headViewUser">
+        <h3 id="textMargin">Users manage</h3>
+        <button class="btn btn-success" id="registerBtn" title="Add new user" onclick="location.href='@Url.Action("Register", "Account" )';return false;">
+            <img src="../Content/addFile.png" id="sizeIcon" />
+        </button>
+    </div>
+    <div id="contentTable">
+        <table>
+            <tr id="bodyTable">
+                <th id="padd"><b>Username</b></th>
+                <th id="padd"><b>Role</b></th>
+                <th id="padd"><b>Change password</b></th>
+                <th id="padd"><b>Change role</b></th>
+                <th id="padd"><b>Delete</b></th>
+            </tr>
+
+            @for (int i = 0; i < Model.UserName.Count(); i++)
+            {
+                <tr id="bodyTable">
+                    <td id="widthCell" title="@Model.UserName[i]">@Model.UserName[i]</td>
+                    <td>@Model.Role[i]</td>
+                    <td id="marginImg1"><button id="transparentIcon" title="Change password" onclick="location.href='@Url.Action("ChangePassPage", "Account", new { Username = @Model.UserName[i]}  ,null)';return false;"><img src="~/Content/ico_change_pass.png" id="sizeIcon" /></button></td>
+                    <td id="marginImg2"><button id="transparentIcon" title="Change role" onclick="location.href='@Url.Action("ChangeRolePage", "Account", new { Username = @Model.UserName[i], Role = @Model.Role[i]  } )';return false;"><img src="~/Content/Icon_change_role.png" id="sizeIcon" /></button></td>
+                    <td id="deleteButton"><button id="transparentIcon" title="Delete user" onclick="deleteConfirmation('@Model.UserName[i]','@Model.Role[i]');"><img src="~/Content/cancelBtn.png" id="deleteIcon" /></button></td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+@Styles.Render("~/Content/Style.css")

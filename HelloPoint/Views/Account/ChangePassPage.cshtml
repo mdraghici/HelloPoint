@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Change Password";
+}
+<script type="text/javascript" src="~/Scripts/ManageAdminPage.js"></script>
+
+
+<div id="bodyChangePass">
+    <h2 id="changePassTitle">@ViewBag.Title</h2>
+
+    <div class="topPasswordPage">
+        <p id="textMargin">Username:</p>
+        <p id="username" class="dbName">@ViewBag.Username</p>
+    </div>
+
+    <br />
+
+        <form id="changePass" method="post">
+            New password: <input class="text-success input-text-password" id="pass1" type="password" placeholder="New password" /> <br /><br />
+            Confirm password: <input class="text-success input-text-password" id="pass2" type="password" placeholder="Confirm password" /> <br /><br />
+
+            <input class="btn btn-success" id="okBtn" type=button onclick="sendPasswordChange()" Value="Change Password">
+        </form>
+    
+</div>
+@Styles.Render("~/Content/Style.css")

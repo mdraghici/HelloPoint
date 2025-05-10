@@ -1,0 +1,116 @@
+﻿@model HelloPoint.Models.UserManagementModel
+@{
+    ViewBag.Title = "UserPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript" src="~/Scripts/PlayListScript.js"></script>    
+
+
+<div container">
+    <div class="container-theplaylist container">
+        <div id="playlistAndButtons">
+            <div id="playlistDiv">
+                <h3 class="h3-upload">Playlist</h3>
+            </div>
+            <div id="buttonsDiv">
+                <button id="btplay" name="btplay" title="Play" onclick="play()" ;return false;">
+                    <img src="../Content/playIcon.png" width="30" height="30" />
+                </button>
+
+                <button id="btpause" name="btpause" title="Pause"  onclick="pause()">
+                    <img src="../Content/pauseIcon.gif" width="30" height="30" />
+                </button>
+
+                <button id="btstop" name="btstop" title="Stop"  onclick="stop()">
+                    <img src="../Content/stopIcon.png" width="30" height="30" />
+                </button>
+
+                <button id="btdeleteplaylist" name="btdeleteplaylist" title="Delete playlist" onclick="clearPlaylist()">
+                    <img src="../Content/deletePlaylist.png" width="30" height="30" />
+                </button>
+            </div>
+        </div>
+        <div id="playlist">
+
+        </div>
+        <div id="playElementDetails">
+            <h4 id="h4-Properties">Properties</h4>
+            <div id="playElementDetailsContent">
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container-myfiles container">
+    <div id="filesAndAdd">
+        <h3 class="h3-upload">My Files</h3>
+
+        <button class="btn btn-success" id="addFile" title="Add new element" onclick="location.href='@Url.Action("Upload", "Account" )';return false;">
+            <img src="../Content/addFile.png" width="30" height="30" />
+        </button>
+    </div>
+    <div class="myFilesDiv">
+        <table class="filesTable" id="filesTableID">
+            @if (Model.Description.Count > 0)
+            {
+                var video = new string[] { "avi", "mpg", "mp4", "mkv" };
+                var image = new string[] { "jpg", "bmp", "png" };
+                var gif = new string[] { "gif" };
+                var ppt = new string[] { "ppt", "pptx" };
+
+                for (int i = 0; i < Model.Description.Count; i++)
+                {
+                    <tr id="filesTableRow" onclick="changeBackground()">
+
+                        <td>
+                            <button id="addelement" name="addelement" title="Add to playlist" onclick="return addElementToPlayList('@Model.SavedFileName[i]','@Model.Type[i]','@Model.Description[i]')">
+                                <img src="~/Content/addArrow.png" width="15" height="15" />
+                            </button>
+                        </td>
+
+                        @if (video.Any(Model.Type[i].Contains))
+                        {
+                            <td><img src="~/Content/video.png" width="30" height="30" /></td>
+                        }
+                        else if (image.Any(Model.Type[i].Contains))
+                        {
+                            <td><img src="~/Content/image.png" width="30" height="30" /></td>
+                        }
+                        else if (gif.Any(Model.Type[i].Contains))
+                        {
+                            <td><img src="~/Content/gif.ico" width="30" height="30" /></td>
+                        }
+                        else if (ppt.Any(Model.Type[i].Contains))
+                        {
+                            <td><img src="~/Content/ppt.png" width="30" height="30" /></td>
+                        }
+
+                        <td class="playlistItemColor">@Model.Description[i].ToString()</td>
+
+                        <td>
+                            <button id="editelement" name="editelement" title="Edit element" onclick="editElement('@Model.SavedFileName[i]')">                                
+                                <img src="~/Content/editBtn.png" width="15" height="15" />
+                            </button>
+                        </td>
+
+                        <td>
+                            <button id="deletelement" name="deletelement" title="Delete element" onclick="deleteFromDbDisk('@Model.SavedFileName[i]','@Model.Type[i]')">
+                                <img src="~/Content/cancelBtn.png" width="15" height="15" />
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+</div>
+
+
+
+@Styles.Render("~/Content/Style.css")

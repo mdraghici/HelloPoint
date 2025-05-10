@@ -1,0 +1,47 @@
+﻿@model HelloPoint.Models.EditFile
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "EditUploadedFile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type='text/javascript' src="~/Scripts/EditUploadedFile.js"></script>
+
+@using (Html.BeginForm("EditUploadedFile", "UserManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container-upload container">
+        <h2 class="h1-upload">Edit element</h2>
+
+        <label class="label-for-description">Description </label><br />
+        <input class="text-success input-text-upload" name="NewDescription" id="Description" required placeholder="Write here some description!" value="@Model.OldDescription" />
+        <input class="btn btn-danger" type="hidden" name="UserName" value=@User.Identity.GetUserName() />
+        <input class="btn btn-danger" type="hidden" name="GuidOriginal" value=@Model.GuidOriginal />
+        <input class="btn btn-danger" type="hidden" name="OldDescription" value=@Model.OldDescription />
+        <input class="btn btn-danger" type="hidden" name="OldType" value="@Model.OldType" />
+       
+
+        <br />
+        <label class="maragin-top-15">
+            <input style="display: none;" type="file" name="NewFile" id="NewFile" onchange="showFileSize()" accept=".avi, .mpg, .mp4, .mkv, .wmv, .jpg, .bmp, .png, .gif, .ppt, .pptx" novalidate />
+            <a class="btn btn-success">Choose a file </a>
+        </label>
+        <br />
+        <label class="limitcolor">Filename :</label>
+        <span id="FileName">@Model.OldFileName</span>
+        <br />
+        <label  class="maragin-top-15 maragin-button-15 limitcolor">The Limit is 2 Gb you have :</label>
+        <span id="limit"></span>
+        <br />
+        <label id="ppthidden" class="maragin-top-15 limitcolor">
+            PPT Slide Duration :
+            <input class="text-success input-text-upload" type="number" name="Slideduration" id="Slideduration" value="5" />
+        </label>
+        <input class="btn btn-success button-left-upload" type="submit" name="submit" id="submit" value="Save" />
+        <button class="btn btn-success button-right-upload" onclick="location.href='@Url.Action("UserManagement", "UserManagement")';return false;">Back</button>
+
+    </div>
+}
+
+@Styles.Render("~/Content/Style.css")
+
