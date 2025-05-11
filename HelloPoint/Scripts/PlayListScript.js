@@ -32,62 +32,66 @@ function getPlayList() {
 
 
 function RenderPlayList(data, selecteditemindex) {
-    removeInfo("playlist");
-    var playlistdiv = document.getElementById("playlist");
-    var result = JSON.parse(data);
-    var htmldata = "";
-    isplaying = false;
-    if (result.length > 0) {
-        htmldata += '<table class="playlistTableClass" id="playlistTableID' + '">';
-        for (var i = 0; i < result.length; i++) {
-            htmldata += '<tr id="playlistElementID' + i + '" onclick="changeBackgroundPlaylist(' + i + ');getDetails(' + i + ',' + result[i].PlayTime + ',' + result[i].Repetitions + ')">';
-            if (result[i].IsSelected) {
-                if (result[i].IsPaused) {
-                    htmldata += '<td><img src="../Content/pauseIcon.gif" width="30" height="30" /></td>';
-                    isplaying = true;
-                    currentliplaying = i;
-                }
-                else {
-                    htmldata += '<td><img src="../Content/playIcon.png" width="30" height="30" /></td>';
-                    isplaying = true;
-                    currentliplaying = i;
-                }
-            } else {
+    try {
+        removeInfo("playlist");
+        var playlistdiv = document.getElementById("playlist");
+        var result = JSON.parse(data);
+        var htmldata = "";
+        isplaying = false;
+        if (result.length > 0) {
+            htmldata += '<table class="playlistTableClass" id="playlistTableID' + '">';
+            for (var i = 0; i < result.length; i++) {
+                htmldata += '<tr id="playlistElementID' + i + '" onclick="changeBackgroundPlaylist(' + i + ');getDetails(' + i + ',' + result[i].PlayTime + ',' + result[i].Repetitions + ')">';
+                if (result[i].IsSelected) {
+                    if (result[i].IsPaused) {
+                        htmldata += '<td><img src="../Content/pauseIcon.gif" width="30" height="30" /></td>';
+                        isplaying = true;
+                        currentliplaying = i;
+                    }
+                    else {
+                        htmldata += '<td><img src="../Content/playIcon.png" width="30" height="30" /></td>';
+                        isplaying = true;
+                        currentliplaying = i;
+                    }
+                } else {
 
-                if (contains([".avi", ".mpg", ".mp4", ".mkv", ".wmv"], result[i].Type)) {
-                    htmldata += '<td><img src="../Content/video.png" width="30" height="30" /></td>';
+                    if (contains([".avi", ".mpg", ".mp4", ".mkv", ".wmv"], result[i].Type)) {
+                        htmldata += '<td><img src="../Content/video.png" width="30" height="30" /></td>';
+                    }
+                    else if (contains([".jpg", ".bmp", ".png"], result[i].Type)) {
+                        htmldata += '<td><img src="../Content/image.png" width="30" height="30" /></td>';
+                    }
+                    else if (".gif" === result[i].Type) {
+                        htmldata += '<td><img src="../Content/gif.ico" width="30" height="30" /></td>';
+                    }
+                    else if (contains([".ppt", ".pptx"], result[i].Type)) {
+                        htmldata += '<td><img src="../Content/ppt.png" width="30" height="30" /></td>';
+                    }
                 }
-                else if (contains([".jpg", ".bmp", ".png"], result[i].Type)) {
-                    htmldata += '<td><img src="../Content/image.png" width="30" height="30" /></td>';
-                }
-                else if (".gif" === result[i].Type) {
-                    htmldata += '<td><img src="../Content/gif.ico" width="30" height="30" /></td>';
-                }
-                else if (contains([".ppt", ".pptx"], result[i].Type)) {
-                    htmldata += '<td><img src="../Content/ppt.png" width="30" height="30" /></td>';
+                htmldata += '<td class="descrioption">' + result[i].Description + '</td>';
+                htmldata += '<td><button id="upelement" name="upelement" title="Move up" onclick="moveUpElement(' + i + ')"><img src="../Content/upArrow.png" width="15" height="15"/></button></td>\
+                           <td><button id="downelement" name="downelement" title="Move down" onclick="moveDownElement(' + i + ')"><img src="../Content/downArrow.png" width="15" height="15" /></button></td>\
+                           <td><button id="deleteplayelement" name="deleteplayelement" title="Delete from playlist" onclick="deleteElement(' + i + ')"><img src="../Content/cancelBtn.png" width="15" height="15"/></button></td>\
+                          </tr>';
+            }
+            htmldata += '</table>';
+        }
+        playlistdiv.insertAdjacentHTML('afterbegin', htmldata);
+        if (selecteditemindex !== -1) {
+            for (var j = 0; j < result.length; j++) {
+                if (j === selecteditemindex) {
+                    document.getElementById("playlistElementID" + j).click(changeBackgroundPlaylist(j));
                 }
             }
-            htmldata += '<td class="descrioption">' + result[i].Description + '</td>';
-            htmldata += '<td><button id="upelement" name="upelement" title="Move up" onclick="moveUpElement(' + i + ')"><img src="../Content/upArrow.png" width="15" height="15"/></button></td>\
-                       <td><button id="downelement" name="downelement" title="Move down" onclick="moveDownElement(' + i + ')"><img src="../Content/downArrow.png" width="15" height="15" /></button></td>\
-                       <td><button id="deleteplayelement" name="deleteplayelement" title="Delete from playlist" onclick="deleteElement(' + i + ')"><img src="../Content/cancelBtn.png" width="15" height="15"/></button></td>\
-                      </tr>';
         }
-        htmldata += '</table>';
-    }
-    playlistdiv.insertAdjacentHTML('afterbegin', htmldata);
-    if (selecteditemindex !== -1) {
-        for (var j = 0; j < result.length; j++) {
-            if (j === selecteditemindex) {
-                document.getElementById("playlistElementID" + j).click(changeBackgroundPlaylist(j));
-            }
+        else {
+            if (isplaying === true && oldindex !== selecteditemindex)
+                removeInfo("playElementDetailsContent");
+            else if (isplaying === false)
+                removeInfo("playElementDetailsContent");
         }
     }
-    else {
-        if (isplaying === true && oldindex !== selecteditemindex)
-            removeInfo("playElementDetailsContent");
-        else if (isplaying === false)
-            removeInfo("playElementDetailsContent");
+    catch (e) {
     }
 }
 
@@ -418,4 +422,4 @@ function deleteFromDbDisk(guid, type) {
     });
 }
 
-setInterval(function () { getPlayList(); }, 20000);
+setInterval(function () { getPlayList(); }, 2000);
